@@ -53,5 +53,12 @@ document.addEventListener("DOMContentLoaded", function () {
         correctGuesses.push(num);
       }
     });
+    // Mostra il risultato
+    const messageEl = document.getElementById("message");
+    if (correctGuesses.length > 0) {
+      messageEl.textContent = `Hai indovinato ${correctGuesses.length} numeri: ${correctGuesses.join(", ")}`;
+    } else {
+      messageEl.textContent = "Non hai indovinato nessun numero.";
+    }
   });
 });
