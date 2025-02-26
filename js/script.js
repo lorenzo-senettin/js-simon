@@ -19,4 +19,22 @@ document.addEventListener("DOMContentLoaded", function () {
     li.textContent = num;
     numbersListEl.appendChild(li);
   });
+
+  // Imposta il countdown di 30 secondi
+  const countdownEl = document.getElementById("countdown");
+  let timeLeft = 30;
+  countdownEl.textContent = timeLeft;
+  const timerInterval = setInterval(() => {
+    timeLeft--;
+    countdownEl.textContent = timeLeft;
+    if (timeLeft === 0) {
+      clearInterval(timerInterval);
+      // Nasconde i numeri, il countdown e le istruzioni
+      document.getElementById("numbers-list").classList.add("d-none");
+      document.getElementById("countdown").classList.add("d-none");
+      document.getElementById("instructions").classList.add("d-none");
+      // Mostra il form per l'inserimento
+      document.getElementById("answers-form").classList.remove("d-none");
+    }
+  }, 1000);
 });
