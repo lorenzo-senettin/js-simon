@@ -37,4 +37,21 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("answers-form").classList.remove("d-none");
     }
   }, 1000);
+
+  // Submit form
+  const form = document.getElementById("answers-form");
+  form.addEventListener("submit", function (event) {
+    event.preventDefault(); // Previene il reload della pagina
+    // Recupera i numeri inseriti
+    const inputs = document.querySelectorAll("#input-group input");
+    const guessedNumbers = Array.from(inputs).map(input => parseInt(input.value));
+
+    // Verifica quali numeri sono stati indovinati
+    const correctGuesses = [];
+    guessedNumbers.forEach(num => {
+      if (randomNumbers.includes(num) && !correctGuesses.includes(num)) {
+        correctGuesses.push(num);
+      }
+    });
+  });
 });
